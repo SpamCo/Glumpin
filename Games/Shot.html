@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Space Shooter Game</title>
+    <style>
+        canvas {
+            background-color: black;
+            display: block;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="gameCanvas" width="800" height="600"></canvas>
+    <div id="score">Score: 0</div>
+
+    <script>
+        const canvas = document.getElementById("gameCanvas");
+        const ctx = canvas.getContext("2d");
+
+        const spaceshipWidth = 50;
+        const spaceshipHeight = 50;
+        const bulletWidth = 5;
+        const bulletHeight = 15;
+        const bulletSpeed = 5;
+
+        const enemyWidth = 50;
+        const enemyHeight = 50;
+        const enemySpeed = 1; // Adjusted for slower enemies
+        const maxEnemies = 5;
+
+        let spaceshipX = canvas.width / 2 - spaceshipWidth / 2;
+        const spaceshipY = canvas.height - spaceshipHeight - 10;
+
+        let bullets = [];
+        let enemies = [];
+        let score = 0;
+
+        function drawSpaceship() {
+            ctx.fillStyle = "white";
+            ctx.fillRect(spaceshipX, spaceshipY, spaceshipWidth, spaceshipHeight);
+        }
+
+        function drawBullets() {
+            ctx.fillStyle = "red";
+            bullets.forEach(bullet => {
+                ctx.fillRect(bullet.x, bullet.y, bulletWidth, bulletHeight);
+            });
+        }
+
+        function drawEnemies() {
+            ctx.fillStyle = "blue";
+            enemies.forEach(enemy => {
+                ctx.fillRect(enemy.x, enemy.y, enemyWidth, enemyHeight);
+            });
+        }
+
+        function updateGameArea() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            drawSpaceship();
+            drawBullets();
+            drawEnemies();
+
+            // Move bullets
+            bullets = bullets.filter(bullet => {
+                bullet.y -= bulletSpeed;
+                return bullet.y >= 0;
+            });
+
+            // Move enemies
+            enemies.forEach(enemy => {
+                enemy.y += enemySpeed;
+
+                // Check for collisions with bullets
+                bullets = bullets.filter(bullet => {
+                    if (
+                        bullet.x < enemy.x + enemyWidth &&
+                        bullet.x + bulletWidth > enemy.x &&
+                        bullet.y < enemy.y + enemyHeight &&
+                        bullet.y + bulletHeight > enemy.y
+                    ) {
+                        enemy.hitCount++;
+                        if (enemy.hitCount >= 3) {
+                            score += 10;
+                            document.getElementById("score").textContent = `Score: ${score}`;
+                            enemies.splice(enemies.indexOf(enemy), 1);
+                        }
+                        return false;
+                    }
+                    return true;
+                });
+            });
+
+            // Remove off-screen enemies
+            enemies = enemies.filter(enemy => enemy.y < canvas.height);
+
+            // Generate new enemies
+            if (enemies.length < maxEnemies && Math.random() < 0.02) {
+                const enemyX = Math.random() * (canvas.width - enemyWidth);
+                enemies.push({ x: enemyX, y: 0, hitCount: 0 });
+            }
+
+            requestAnimationFrame(updateGameArea);
+        }
+
+        function shootBullet() {
+            const bulletX = spaceshipX + spaceshipWidth / 2 - bulletWidth / 2;
+            const bulletY = spaceshipY;
+            bullets.push({ x: bulletX, y: bulletY });
+        }
+
+        window.addEventListener("keydown", (e) => {
+            if (e.key === "ArrowLeft" && spaceshipX > 0) {
+                spaceshipX -= 10; // Adjusted for faster player
+            } else if (e.key === "ArrowRight" && spaceshipX < canvas.width - spaceshipWidth) {
+                spaceshipX += 10; // Adjusted for faster player
+            } else if (e.key === " ") {
+                shootBullet();
+            }
+        });
+
+        updateGameArea();
+    </script>
+</body>
+</html>
