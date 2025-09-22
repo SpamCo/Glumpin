@@ -4,11 +4,12 @@
     gap: 20px;
   }
   .box {
-    width: 300px;
+    width: 100vw;
     border: 1px solid #ccc;
     overflow: hidden;
     text-align: center;
     background-color: #fff;
+    aspect-ratio: 1 / 1;
   }
   .box:hover {
     transform: scale(1.01);
