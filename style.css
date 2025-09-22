@@ -9,7 +9,7 @@ body {
    justify-content: center;
   }
   .box {
-    width: 1000px;
+    width: 100px;
     border: 1px solid #ccc;
     overflow: hidden;
     text-align: center;
