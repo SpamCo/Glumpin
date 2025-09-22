@@ -10,10 +10,10 @@ body {
   }
   .box {
     width: 1000px;
-    border: 1px solid #ccc;
+    border: 1px solid #000000;
     overflow: hidden;
     text-align: center;
-    background-color: #fff;
+    background-color: #bfbfbf;
   }
   .box:hover {
     transform: scale(1.01);
