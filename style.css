@@ -2,6 +2,11 @@
   padding: 20px;
   border: 1px solid;
 }
+
 .post[data-sizing="intrinsic"] {
   width: min-content;
+}
+
+.post {
+  --flow-space: 2rem;
 }
