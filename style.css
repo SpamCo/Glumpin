@@ -1,5 +1,5 @@
 body {
-    background-color: #6B6B6B;
+    background-color: #7A7A7A;
 }
 
 .container {
@@ -10,7 +10,6 @@ body {
   }
   .box {
     width: 500px;
-    border: 1px solid #000000;
     overflow: hidden;
     text-align: center;
     background-color: #bfbfbf;
