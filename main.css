@@ -14,8 +14,7 @@ body {
     overflow: hidden;
     text-align: center;
     background-color: #bfbfbf;   
-    transition-property: transform;
-    transition-delay: 0.5;
+    transition: transform 0.3s ease;
   }
 
   .box:hover {   
