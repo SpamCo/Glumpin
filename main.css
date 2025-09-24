@@ -1,6 +1,6 @@
 body {
     background-color: BF9F84;
-}
+  }
 
 .container {
     display: flex;
@@ -28,6 +28,7 @@ body {
   }
   .box .content {
     padding: 15px;
+    font-family: "Alan Sans", sans-serif;
   }
   .box .content h3 {
     margin: 0 0 10px;
