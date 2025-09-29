@@ -27,14 +27,16 @@ body {
     object-fit: cover;
   }
   .box .content {
-    padding: 15px;
     font-family: "Alan Sans", sans-serif;
   }
   .box .content h3 {
+    padding: 1px;
     margin: 0 0 10px;
-    font-size: 18px;
+    font-size: 20px;
+    color: #000000;
   }
   .box .content p {
+    padding: 8px;
     font-size: 14px;
     color: #555;
   } 
