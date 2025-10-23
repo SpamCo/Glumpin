@@ -13,6 +13,13 @@
   padding-left: 20px;
 }
 
+.about {
+  background-color: white;
+  height: 20%;
+  width: 20%;
+  
+}
+
 .bg {
       position: fixed;
       top: 0;
