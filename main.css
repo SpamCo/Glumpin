@@ -1,26 +1,25 @@
-.top {
-  background-color: white;
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 80px;
-  width: 100%;
-  z-index: 1;
-}
+  .top {
+    background-color: white;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 80px;
+    width: 100%;
+    z-index: 1;
+  }
 
-.top h1 {
-  font-family: "Alan Sans", sans-serif;
-  padding-left: 20px;
-}
+  .top h1 {
+    font-family: "Alan Sans", sans-serif;
+    padding-left: 20px;
+  }
 
-.about {
-  background-color: white;
-  height: 20%;
-  width: 20%;
-  
-}
+  .about {
+    background-color: white;
+    height: 20%;
+    width: 20%;
+  }
 
-.bg {
+  .bg {
       position: fixed;
       top: 0;
       left: 0;
@@ -32,13 +31,15 @@
       filter: blur(3px);
       transform: scale(1.1);
       z-index: -1;
-    }
+  }
 
-.container {
+  .container {
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
-   justify-content: center;
+    justify-content: center; 
+    position: relative;
+    top: 100;
   }
 
   .box {
@@ -58,15 +59,18 @@
     height: 500px;
     object-fit: cover;
   }
+
   .box .content {
     font-family: "Alan Sans", sans-serif;
   }
+
   .box .content h3 {
     padding: 1px;
     margin: 0 0 10px;
     font-size: 20px;
     color: #000000;
   }
+
   .box .content p {
     padding: 8px;
     font-size: 14px;
